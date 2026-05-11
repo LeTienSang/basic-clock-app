@@ -1,0 +1,153 @@
+@import "tailwindcss";
+
+/* 1. CSS Variables for Theme Switching */
+:root {
+  --bg-base: #F8FAFC;
+  --bg-surface: #FFFFFF;
+  --bg-elevated: #F1F5F9;
+  --bg-input: #FFFFFF;
+
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --text-muted: #94A3B8;
+
+  --accent-clock: #0EA5E9; /* Slightly deeper Cyan for light mode */
+  --accent-stopwatch: #10B981;
+  --accent-timer: #F59E0B;
+
+  --glow-opacity: 0.1;
+}
+
+.dark {
+  --bg-base: #050814;
+  --bg-surface: #0E1324;
+  --bg-elevated: #1F2937;
+  --bg-input: #12182B;
+
+  --text-primary: #FFFFFF;
+  --text-secondary: #94A3B8;
+  --text-muted: #475569;
+
+  --accent-clock: #00F2FF;
+  --accent-stopwatch: #00FF94;
+  --accent-timer: #FFB800;
+
+  --glow-opacity: 0.4;
+}
+
+@theme {
+  /* Design Tokens mapped to CSS Variables */
+  --color-bg-base: var(--bg-base);
+  --color-bg-surface: var(--bg-surface);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-bg-input: var(--bg-input);
+
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+
+  --color-clock: var(--accent-clock);
+  --color-stopwatch: var(--accent-stopwatch);
+  --color-timer: var(--accent-timer);
+
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
+  --color-danger: #FF4D4D;
+  --color-info: #3B82F6;
+
+  --font-display: "JetBrains Mono", "Space Mono", monospace;
+  --font-ui: "Sora", "DM Sans", sans-serif;
+
+  /* Custom Glows */
+  --shadow-glow-clock: 0 0 25px rgba(0, 242, 255, var(--glow-opacity));
+  --shadow-glow-stopwatch: 0 0 25px rgba(0, 255, 148, var(--glow-opacity));
+  --shadow-glow-timer: 0 0 25px rgba(255, 184, 0, var(--glow-opacity));
+
+  /* Animations */
+  --animate-blink: blink 1s step-end infinite;
+  --animate-fade-slide-in: fadeSlideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-timer-pulse: timerPulse 2s ease-in-out infinite;
+  --animate-float: float 6s ease-in-out infinite;
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  @keyframes fadeSlideIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes timerPulse {
+    0%, 100% { transform: scale(1); filter: brightness(1); }
+    50% { transform: scale(1.03); filter: brightness(1.2); }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-20px) scale(1.05); }
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-bg-base text-text-primary font-ui antialiased transition-colors duration-500 selection:bg-clock/30;
+    margin: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  #root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: radial-gradient(circle at 50% -20%, rgba(0, 242, 255, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 0% 100%, rgba(255, 184, 0, 0.03) 0%, transparent 40%);
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-white/[0.03] dark:bg-white/[0.03] backdrop-blur-2xl border border-black/5 dark:border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.1)] dark:shadow-[0_8px_32px_0_rgba(0,0,0,0.5)];
+  }
+
+  .text-glow-clock {
+    text-shadow: var(--shadow-glow-clock);
+  }
+
+  .text-glow-stopwatch {
+    text-shadow: var(--shadow-glow-stopwatch);
+  }
+
+  .text-glow-timer {
+    text-shadow: var(--shadow-glow-timer);
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.05);
+  .dark & {
+    background: rgba(255, 255, 255, 0.05);
+  }
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.1);
+  .dark & {
+    background: rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Typography Overrides */
+h1 {
+  font-family: var(--font-ui);
+  letter-spacing: 0.5em;
+}
