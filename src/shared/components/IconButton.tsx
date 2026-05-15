@@ -30,8 +30,8 @@ export const IconButton: React.FC<IconButtonProps> = ({
   };
 
   const variantClasses = {
-    ghost: 'hover:bg-black/5 dark:hover:bg-white/5 text-text-secondary hover:text-text-primary border border-transparent hover:border-black/5 dark:hover:border-white/10',
-    filled: 'bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/20 text-text-primary border border-black/5 dark:border-white/10',
+    ghost: 'hover:bg-black/5 dark:hover:bg-white/5 text-text-secondary hover:text-text-primary border border-transparent',
+    filled: 'glass text-text-primary hover:scale-105 active:scale-95 transition-all duration-300',
   };
 
   return (

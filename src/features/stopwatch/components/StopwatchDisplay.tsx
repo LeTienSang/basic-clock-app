@@ -22,7 +22,7 @@ export const StopwatchDisplay: React.FC<StopwatchDisplayProps> = ({ elapsedTime 
       value={mainTime} 
       ms={ms}
       size="xl"
-      label="Stopwatch"
+      label="Bấm giờ"
       variant="stopwatch"
     />
   );

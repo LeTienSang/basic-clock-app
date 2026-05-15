@@ -55,7 +55,7 @@ export const TimerDisplay: React.FC<TimerDisplayProps> = ({
             value={timeStr} 
             variant={isWarning ? 'danger' : 'timer'}
             size="lg"
-            label={status === 'finished' ? 'DONE' : ''}
+            label={status === 'finished' ? 'HOÀN THÀNH' : ''}
           />
         </div>
       </div>

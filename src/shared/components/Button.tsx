@@ -37,13 +37,13 @@ export const Button: React.FC<ButtonProps> = ({
   
   // Variant classes
   const variantClasses = {
-    primary: 'bg-gradient-to-br from-[#22D3EE] to-[#0EA5E9] text-gray-900 shadow-[0_0_20px_rgba(34,211,238,0.3)] hover:shadow-[0_0_30px_rgba(34,211,238,0.5)]',
-    secondary: 'bg-white/10 hover:bg-white/20 text-text-primary border border-white/10',
-    danger: 'bg-gradient-to-br from-red-500 to-red-700 text-white shadow-[0_0_20px_rgba(239,68,68,0.3)] hover:shadow-[0_0_30px_rgba(239,68,68,0.5)]',
-    ghost: 'bg-transparent hover:bg-white/5 text-text-secondary hover:text-text-primary',
-    clock: 'bg-gradient-to-br from-clock to-[#0EA5E9] text-gray-900 shadow-[0_0_20px_rgba(34,211,238,0.3)]',
-    stopwatch: 'bg-gradient-to-br from-stopwatch to-emerald-700 text-gray-900 shadow-[0_0_20px_rgba(16,185,129,0.3)]',
-    timer: 'bg-gradient-to-br from-timer to-amber-700 text-gray-900 shadow-[0_0_20px_rgba(245,158,11,0.3)]',
+    primary: 'bg-gradient-to-br from-clock to-[#0056D2] text-white shadow-[0_4px_15px_rgba(0,122,255,0.3)] hover:shadow-[0_8px_25px_rgba(0,122,255,0.4)]',
+    secondary: 'glass text-text-primary',
+    danger: 'bg-gradient-to-br from-danger to-[#CC2D25] text-white shadow-[0_4px_15px_rgba(255,59,48,0.3)] hover:shadow-[0_8px_25px_rgba(255,59,48,0.4)]',
+    ghost: 'bg-transparent hover:bg-black/5 dark:hover:bg-white/5 text-text-secondary hover:text-text-primary',
+    clock: 'bg-gradient-to-br from-clock to-[#0056D2] text-white shadow-[0_4px_15px_rgba(0,122,255,0.3)]',
+    stopwatch: 'bg-gradient-to-br from-stopwatch to-[#289D46] text-white shadow-[0_4px_15px_rgba(52,199,89,0.3)]',
+    timer: 'bg-gradient-to-br from-timer to-[#CC7A00] text-white shadow-[0_4px_15px_rgba(255,149,0,0.3)]',
   };
 
   // Size classes

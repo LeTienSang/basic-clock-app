@@ -21,40 +21,41 @@ export const StopwatchControls: React.FC<StopwatchControlsProps> = ({
   onLap,
 }) => {
   return (
-    <div className="flex justify-center items-center gap-12 mt-12">
+    <div className="flex justify-center items-center gap-8 md:gap-16 mt-12 md:mt-16 animate-fade-slide-in w-full">
       {/* Nút Lap / Reset */}
-      <div className="w-20 flex justify-center">
+      <div className="flex-1 flex justify-end">
         {(status === 'running' || status === 'paused') && (
           <button
             onClick={status === 'running' ? onLap : onReset}
-            className="w-16 h-16 rounded-full glass text-text-primary text-[10px] font-bold uppercase tracking-widest active:scale-90 transition-all"
+            className="w-20 h-20 rounded-full glass text-text-primary text-[10px] font-black uppercase tracking-[0.2em] active:scale-90 transition-all duration-300 hover:scale-105"
           >
-            {status === 'running' ? 'Lap' : 'Reset'}
+            {status === 'running' ? 'Vòng' : 'Đặt lại'}
           </button>
         )}
       </div>
 
       {/* Nút Start / Pause (Chính giữa) */}
-      <div className="w-24 flex justify-center">
+      <div className="flex-none flex justify-center">
         {status === 'running' ? (
           <button
             onClick={onPause}
-            className="w-20 h-20 rounded-full bg-gradient-to-br from-red-500 to-red-700 shadow-[0_0_30px_rgba(239,68,68,0.4)] text-white text-xs font-bold uppercase tracking-widest active:scale-95 transition-all"
+            className="w-24 h-24 rounded-full bg-gradient-to-br from-danger to-[#CC2D25] shadow-[0_8px_30px_rgba(255,59,48,0.3)] text-white text-[11px] font-black uppercase tracking-[0.2em] active:scale-95 transition-all duration-300 hover:scale-110"
           >
-            Pause
+            Tạm dừng
           </button>
         ) : (
           <button
             onClick={onStart}
-            className="w-20 h-20 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 shadow-[0_0_30px_rgba(16,185,129,0.4)] text-gray-900 text-xs font-bold uppercase tracking-widest active:scale-95 transition-all"
+            className="w-24 h-24 rounded-full bg-gradient-to-br from-stopwatch to-[#289D46] shadow-[0_8px_30px_rgba(52,199,89,0.3)] text-white text-[11px] font-black uppercase tracking-[0.2em] active:scale-95 transition-all duration-300 hover:scale-110"
           >
-            {status === 'idle' ? 'Start' : 'Resume'}
+            {status === 'idle' ? 'Bắt đầu' : 'Tiếp tục'}
           </button>
         )}
       </div>
       
-      {/* Spacer bên phải */}
-      <div className="w-20"></div>
+      {/* Nút ảo hoặc khoảng trống bên phải để cân bằng */}
+      <div className="flex-1 flex justify-start">
+      </div>
     </div>
   );
 };

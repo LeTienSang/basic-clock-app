@@ -20,10 +20,10 @@ export const LapList: React.FC<LapListProps> = ({ laps }) => {
 
   return (
     <div className="w-full max-w-md mt-12 animate-fade-slide-in">
-      <div className="flex justify-between px-6 py-3 text-[10px] font-bold text-text-muted uppercase tracking-[0.3em] opacity-50">
-        <span>LAP</span>
-        <span>SPLIT</span>
-        <span>TOTAL</span>
+      <div className="flex justify-between px-6 py-3 text-[10px] font-black text-text-muted uppercase tracking-[0.3em] opacity-40">
+        <span>VÒNG</span>
+        <span>KHOẢNG</span>
+        <span>TỔNG</span>
       </div>
       
       <div className="flex flex-col gap-2 max-h-[240px] overflow-y-auto pr-1 custom-scrollbar">

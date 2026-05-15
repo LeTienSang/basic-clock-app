@@ -32,7 +32,7 @@ export const StopwatchContainer: React.FC<StopwatchContainerProps> = ({ isActive
   });
 
   return (
-    <div className="flex flex-col items-center justify-center py-10 w-full max-w-lg mx-auto">
+    <div className="flex flex-col items-center py-10 w-full max-w-lg mx-auto">
       <StopwatchDisplay elapsedTime={elapsedTime} />
       
       <StopwatchControls 

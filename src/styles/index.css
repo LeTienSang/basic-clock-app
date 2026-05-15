@@ -8,31 +8,31 @@
   --bg-input: #FFFFFF;
 
   --text-primary: #0F172A;
-  --text-secondary: #475569;
-  --text-muted: #94A3B8;
+  --text-secondary: #334155;
+  --text-muted: #64748B;
 
-  --accent-clock: #0EA5E9; /* Slightly deeper Cyan for light mode */
-  --accent-stopwatch: #10B981;
-  --accent-timer: #F59E0B;
+  --accent-clock: #007AFF; /* iOS Blue */
+  --accent-stopwatch: #34C759; /* iOS Green */
+  --accent-timer: #FF9500; /* iOS Orange */
 
-  --glow-opacity: 0.1;
+  --glow-opacity: 0.15;
 }
 
 .dark {
-  --bg-base: #050814;
-  --bg-surface: #0E1324;
-  --bg-elevated: #1F2937;
-  --bg-input: #12182B;
+  --bg-base: #000000;
+  --bg-surface: #1C1C1E;
+  --bg-elevated: #2C2C2E;
+  --bg-input: #1C1C1E;
 
   --text-primary: #FFFFFF;
-  --text-secondary: #94A3B8;
-  --text-muted: #475569;
+  --text-secondary: #AEAEB2;
+  --text-muted: #8E8E93;
 
-  --accent-clock: #00F2FF;
-  --accent-stopwatch: #00FF94;
-  --accent-timer: #FFB800;
+  --accent-clock: #0A84FF;
+  --accent-stopwatch: #30D158;
+  --accent-timer: #FF9F0A;
 
-  --glow-opacity: 0.4;
+  --glow-opacity: 0.5;
 }
 
 @theme {
@@ -50,49 +50,50 @@
   --color-stopwatch: var(--accent-stopwatch);
   --color-timer: var(--accent-timer);
 
-  --color-success: #10B981;
-  --color-warning: #F59E0B;
-  --color-danger: #FF4D4D;
-  --color-info: #3B82F6;
+  --color-success: #34C759;
+  --color-warning: #FFCC00;
+  --color-danger: #FF3B30;
+  --color-info: #007AFF;
 
-  --font-display: "JetBrains Mono", "Space Mono", monospace;
-  --font-ui: "Sora", "DM Sans", sans-serif;
+  --font-display: "Be Vietnam Pro", "Inter", "JetBrains Mono", "Space Mono", monospace;
+  --font-ui: "Be Vietnam Pro", "Inter", "Sora", "DM Sans", sans-serif;
 
   /* Custom Glows */
-  --shadow-glow-clock: 0 0 25px rgba(0, 242, 255, var(--glow-opacity));
-  --shadow-glow-stopwatch: 0 0 25px rgba(0, 255, 148, var(--glow-opacity));
-  --shadow-glow-timer: 0 0 25px rgba(255, 184, 0, var(--glow-opacity));
+  --shadow-glow-clock: 0 0 30px rgba(0, 122, 255, var(--glow-opacity));
+  --shadow-glow-stopwatch: 0 0 30px rgba(52, 199, 89, var(--glow-opacity));
+  --shadow-glow-timer: 0 0 30px rgba(255, 149, 0, var(--glow-opacity));
 
   /* Animations */
-  --animate-blink: blink 1s step-end infinite;
-  --animate-fade-slide-in: fadeSlideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  --animate-timer-pulse: timerPulse 2s ease-in-out infinite;
-  --animate-float: float 6s ease-in-out infinite;
+  --animate-blink: blink 1.2s step-end infinite;
+  --animate-fade-slide-in: fadeSlideIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-timer-pulse: timerPulse 2.5s ease-in-out infinite;
+  --animate-float: float 8s ease-in-out infinite;
 
   @keyframes blink {
     0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
+    50% { opacity: 0.1; }
   }
 
   @keyframes fadeSlideIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from { opacity: 0; transform: translateY(30px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
   }
 
   @keyframes timerPulse {
-    0%, 100% { transform: scale(1); filter: brightness(1); }
-    50% { transform: scale(1.03); filter: brightness(1.2); }
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.02); opacity: 0.8; }
   }
 
   @keyframes float {
-    0%, 100% { transform: translateY(0) scale(1); }
-    50% { transform: translateY(-20px) scale(1.05); }
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(20px, -30px) scale(1.1); }
+    66% { transform: translate(-20px, 15px) scale(0.9); }
   }
 }
 
 @layer base {
   body {
-    @apply bg-bg-base text-text-primary font-ui antialiased transition-colors duration-500 selection:bg-clock/30;
+    @apply bg-bg-base text-text-primary font-ui antialiased transition-colors duration-700 selection:bg-clock/30;
     margin: 0;
     min-height: 100vh;
     overflow-x: hidden;
@@ -102,40 +103,49 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background: radial-gradient(circle at 50% -20%, rgba(0, 242, 255, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 0% 100%, rgba(255, 184, 0, 0.03) 0%, transparent 40%);
+    background: radial-gradient(circle at 50% -10%, rgba(0, 122, 255, 0.08) 0%, transparent 60%),
+                radial-gradient(circle at 100% 100%, rgba(255, 149, 0, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 0% 50%, rgba(52, 199, 89, 0.03) 0%, transparent 40%);
+    .dark & {
+      background: radial-gradient(circle at 50% -10%, rgba(10, 132, 255, 0.15) 0%, transparent 60%),
+                  radial-gradient(circle at 100% 100%, rgba(255, 159, 10, 0.1) 0%, transparent 50%),
+                  radial-gradient(circle at 0% 50%, rgba(48, 209, 88, 0.05) 0%, transparent 40%);
+    }
   }
 }
 
 @layer utilities {
   .glass {
-    @apply bg-white/[0.03] dark:bg-white/[0.03] backdrop-blur-2xl border border-black/5 dark:border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.1)] dark:shadow-[0_8px_32px_0_rgba(0,0,0,0.5)];
+    @apply bg-white/70 dark:bg-black/40 backdrop-blur-3xl border border-white/20 dark:border-white/5 shadow-[0_8px_32px_0_rgba(0,0,0,0.08)] dark:shadow-[0_8px_64px_0_rgba(0,0,0,0.6)];
   }
 
   .text-glow-clock {
-    text-shadow: var(--shadow-glow-clock);
+    text-shadow: 0 0 20px rgba(0, 122, 255, 0.3);
+    .dark & { text-shadow: 0 0 30px rgba(10, 132, 255, 0.5); }
   }
 
   .text-glow-stopwatch {
-    text-shadow: var(--shadow-glow-stopwatch);
+    text-shadow: 0 0 20px rgba(52, 199, 89, 0.3);
+    .dark & { text-shadow: 0 0 30px rgba(48, 209, 88, 0.5); }
   }
 
   .text-glow-timer {
-    text-shadow: var(--shadow-glow-timer);
+    text-shadow: 0 0 20px rgba(255, 149, 0, 0.3);
+    .dark & { text-shadow: 0 0 30px rgba(255, 159, 10, 0.5); }
   }
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 6px;
 }
 ::-webkit-scrollbar-track {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.05);
+  background: rgba(0, 0, 0, 0.1);
   .dark & {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.1);
   }
   border-radius: 99px;
 }
